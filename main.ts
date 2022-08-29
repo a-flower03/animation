@@ -1,22 +1,18 @@
-input.onGesture(Gesture.Shake, function () {
-    music.playMelody("C5 B A G F E D C ", 120)
+input.onButtonPressed(Button.A, function () {
+    for (let index = 0; index < 4; index++) {
+        basic.showIcon(IconNames.SmallHeart)
+        basic.pause(500)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+        basic.showIcon(IconNames.Heart)
+        basic.clearScreen()
+    }
 })
-input.onLogoEvent(TouchButtonEvent.Touched, function () {
-    basic.showIcon(IconNames.Heart)
-    basic.pause(1000)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . # . .
-        . . . . .
-        . . . . .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
+input.onGesture(Gesture.Shake, function () {
+    music.startMelody(music.builtInMelody(Melodies.Birthday), MelodyOptions.Once)
 })
